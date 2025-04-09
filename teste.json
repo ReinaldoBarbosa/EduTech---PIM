@@ -1,0 +1,290 @@
+{
+    "Usuarios": [
+        {
+            "nome": "Carlos",
+            "senha": "5678"
+        },
+        {
+            "nome": "Rei",
+            "senha": "147"
+        },
+        {
+            "nome": "Paulo",
+            "senha": "159"
+        },
+        {
+            "nome": "Luiz",
+            "senha": "45910"
+        },
+        {
+            "nome": "Mary",
+            "senha": "951"
+        },
+        {
+            "nome": "Jorge",
+            "senha": "157"
+        },
+        {
+            "nome": "Naty",
+            "senha": "777"
+        },
+        {
+            "nome": "Gustavo",
+            "senha": "12345"
+        },
+        {
+            "nome": "Guilherme",
+            "senha": "gAAAAABn1N64xwlK63LZSrSM9UNmT6mz-PK855aMxfiVYXfk8BbJYTO--BsqvlxpRhMFqlXoa7rGe9VA0v1sDcAHQcWz0Q5QUQ=="
+        },
+        {
+            "nome": "Jorge 157",
+            "senha": "Jorginho157*"
+        },
+        {
+            "nome": "Mark",
+            "senha": "Mark123*"
+        },
+        {
+            "nome": "Luiz Miguel",
+            "senha": "LuizMiguel12*"
+        },
+        {
+            "nome": "Maria",
+            "senha": "M1597*io"
+        },
+        {
+            "nome": "teste",
+            "senha": "Totestando168*"
+        },
+        {
+            "nome": "Isadora",
+            "senha": "Luiz"
+        },
+        {
+            "nome": "Reizinho",
+            "senha": "Rei157**"
+        },
+        {
+            "nome": "jorginho",
+            "senha": "JOrginho18*"
+        },
+        {
+            "nome": "adriano",
+            "senha": "Adriano123#"
+        },
+        {
+            "nome": "Roger",
+            "senha": "Roger123#"
+        }
+    ],
+    "Materias": [
+        {
+            "nome": "Fundamentos de Python",
+            "questoes": [
+                {
+                    "enunciado": "O que faz o comando print() em Python?",
+                    "alternativa_a": "a) Executa uma função de soma",
+                    "alternativa_b": "b) Exibe uma mensagem na tela",
+                    "alternativa_c": "c) Define uma variável",
+                    "resposta": "alternativa_b"
+                },
+                {
+                    "enunciado": "Qual é a saída do código a seguir? #x = 5 #print(x)",
+                    "alternativa_a": "a) 5",
+                    "alternativa_b": "b) x",
+                    "alternativa_c": "c) Erro",
+                    "resposta": "alternativa_a"
+                },
+                {
+                    "enunciado": "Como se declara uma variável em Python?",
+                    "alternativa_a": "a) int x = 10",
+                    "alternativa_b": "b) x = 10",
+                    "alternativa_c": "c) let x = 10",
+                    "resposta": "alternativa_b"
+                }
+            ]
+        },
+        {
+            "nome": "Estruturas de Dados em Python",
+            "questoes": [
+                {
+                    "enunciado": "Qual dessas é uma estrutura de dados mutável em Python?",
+                    "alternativa_a": "a) Tupla",
+                    "alternativa_b": "b) Lista",
+                    "alternativa_c": "c) String",
+                    "resposta": "alternativa_b"
+                },
+                {
+                    "enunciado": "O que a função len() retorna em uma lista?",
+                    "alternativa_a": "a) O maior valor da lista",
+                    "alternativa_b": "b) O número de elementos da lista",
+                    "alternativa_c": "c) O índice do primeiro item",
+                    "resposta": "alternativa_b"
+                },
+                {
+                    "enunciado": "Como você acessa o primeiro elemento de uma lista meus_dados = [10, 20, 30]?",
+                    "alternativa_a": "a) meus_dados[1]",
+                    "alternativa_b": "b) meus_dados[0]",
+                    "alternativa_c": "c) meus_dados.first()",
+                    "resposta": "alternativa_b"
+                }
+            ]
+        },
+        {
+            "nome": "Algoritmos de Ordenação",
+            "questoes": [
+                {
+                    "enunciado": "Qual algoritmo de ordenação é mais eficiente para listas grandes?",
+                    "alternativa_a": "a) Bubble Sort",
+                    "alternativa_b": "b) Merge Sort",
+                    "alternativa_c": "c) Selection Sort",
+                    "resposta": "alternativa_b"
+                },
+                {
+                    "enunciado": "O que o algoritmo de ordenação 'Bubble Sort' faz?",
+                    "alternativa_a": "a) Ordena os elementos através de troca contínua entre vizinhos",
+                    "alternativa_b": "b) Ordena dividindo a lista em partes menores",
+                    "alternativa_c": "c) Ordena por inserção contínua",
+                    "resposta": "alternativa_a"
+                },
+                {
+                    "enunciado": "Qual é a complexidade temporal do algoritmo 'Quick Sort' no pior caso?",
+                    "alternativa_a": "a) O(n)",
+                    "alternativa_b": "b) O(n log n)",
+                    "alternativa_c": "c) O(n²)",
+                    "resposta": "alternativa_c"
+                }
+            ]
+        },
+        {
+            "nome": "Banco de Dados com SQL",
+            "questoes": [
+                {
+                    "enunciado": "O que faz o comando SQL SELECT * FROM tabela?",
+                    "alternativa_a": "a) Exclui todos os dados da tabela",
+                    "alternativa_b": "b) Atualiza os dados da tabela",
+                    "alternativa_c": "c) Exibe todos os dados da tabela",
+                    "resposta": "alternativa_c"
+                },
+                {
+                    "enunciado": "Qual comando SQL é usado para excluir uma linha de uma tabela?",
+                    "alternativa_a": "a) REMOVE",
+                    "alternativa_b": "b) DELETE",
+                    "alternativa_c": "c) DROP",
+                    "resposta": "alternativa_b"
+                },
+                {
+                    "enunciado": "O que faz o comando SQL INSERT INTO tabela (coluna1, coluna2) VALUES (valor1, valor2)?",
+                    "alternativa_a": "a) Modifica os dados existentes na tabela",
+                    "alternativa_b": "b) Insere uma nova linha na tabela",
+                    "alternativa_c": "c) Cria uma nova tabela",
+                    "resposta": "alternativa_b"
+                }
+            ]
+        },
+        {
+            "nome": "Programação Web com JavaScript",
+            "questoes": [
+                {
+                    "enunciado": "Qual comando JavaScript exibe uma mensagem no console?",
+                    "alternativa_a": "a) alert()",
+                    "alternativa_b": "b) console.log()",
+                    "alternativa_c": "c) print()",
+                    "resposta": "alternativa_b"
+                },
+                {
+                    "enunciado": "Como você declara uma variável em JavaScript?",
+                    "alternativa_a": "a) var x = 10",
+                    "alternativa_b": "b) int x = 10",
+                    "alternativa_c": "c) declare x = 10",
+                    "resposta": "alternativa_a"
+                },
+                {
+                    "enunciado": "O que o código a seguir faz em JavaScript? function saudacao() { return 'Olá!'; } console.log(saudacao());",
+                    "alternativa_a": "a) Exibe 'Olá!' no console",
+                    "alternativa_b": "b) Exibe um erro",
+                    "alternativa_c": "c) Nada acontece",
+                    "resposta": "alternativa_a"
+                }
+            ]
+        },
+        {
+            "nome": "Introdução ao Git e GitHub",
+            "questoes": [
+                {
+                    "enunciado": "Qual comando Git é usado para adicionar alterações ao índice (staging area)?",
+                    "alternativa_a": "a) git commit",
+                    "alternativa_b": "b) git add",
+                    "alternativa_c": "c) git push",
+                    "resposta": "alternativa_b"
+                },
+                {
+                    "enunciado": "O que o comando git clone faz?",
+                    "alternativa_a": "a) Cria um novo repositório local",
+                    "alternativa_b": "b) Baixa um repositório remoto para o local",
+                    "alternativa_c": "c) Faz commit das alterações",
+                    "resposta": "alternativa_b"
+                },
+                {
+                    "enunciado": "Como você cria uma nova ramificação (branch) no Git?",
+                    "alternativa_a": "a) git branch nome_da_branch",
+                    "alternativa_b": "b) git create nome_da_branch",
+                    "alternativa_c": "c) git switch nome_da_branch",
+                    "resposta": "alternativa_a"
+                }
+            ]
+        },
+        {
+            "nome": "Desenvolvimento de APIs com Python (Flask/Django)",
+            "questoes": [
+                {
+                    "enunciado": "Qual dessas bibliotecas é usada para construir APIs em Python?",
+                    "alternativa_a": "a) Flask",
+                    "alternativa_b": "b) Pandas",
+                    "alternativa_c": "c) NumPy",
+                    "resposta": "alternativa_a"
+                },
+                {
+                    "enunciado": "Como você cria uma rota básica no Flask?",
+                    "alternativa_a": "a) Define a URL /hello que responde com \"Hello, World!\"",
+                    "alternativa_b": "b) Exclui a URL /hello",
+                    "alternativa_c": "c) Redireciona para outra URL",
+                    "resposta": "alternativa_a"
+                },
+                {
+                    "enunciado": "Qual comando é utilizado para rodar um servidor Flask localmente?",
+                    "alternativa_a": "a) flask serve",
+                    "alternativa_b": "b) python app.py",
+                    "alternativa_c": "c) flask run",
+                    "resposta": "alternativa_c"
+                }
+            ]
+        },
+        {
+            "nome": "Testes Unitários em Python",
+            "questoes": [
+                {
+                    "enunciado": "Qual módulo Python é usado para escrever testes unitários?",
+                    "alternativa_a": "a) unittest",
+                    "alternativa_b": "b) testing",
+                    "alternativa_c": "c) pytest",
+                    "resposta": "alternativa_a"
+                },
+                {
+                    "enunciado": "O que o código a seguir faz? def somar(a, b): return a + b",
+                    "alternativa_a": "a) Soma dois números",
+                    "alternativa_b": "b) Subtrai dois números",
+                    "alternativa_c": "c) Multiplica dois números",
+                    "resposta": "alternativa_a"
+                },
+                {
+                    "enunciado": "Qual comando é usado para rodar os testes no unittest?",
+                    "alternativa_a": "a) python -m unittest",
+                    "alternativa_b": "b) run tests",
+                    "alternativa_c": "c) pytest",
+                    "resposta": "alternativa_a"
+                }
+            ]
+        }
+    ]
+}
