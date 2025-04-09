@@ -1,4 +1,5 @@
 Projeto Integrador Multidisciplinar
+
 💡 Objetivo
 Desenvolver uma plataforma digital segura voltada à educação digital e inclusão tecnológica, com foco em:
 
