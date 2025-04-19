@@ -171,13 +171,17 @@ class TelaOpcoes(ctk.CTkFrame):
 
     def iniciar_quiz(self):
         self.pack_forget()
-        TelaQuiz(app, self.materia, self.nivel)  # Corrigido: Passar 'nivel' corretamente para TelaQuiz
+        # Agora passando os parâmetros diretamente para a TelaQuiz
+        TelaQuiz(app, self.materia, self.nivel)  # Aqui a instância de TelaQuiz é chamada com os parâmetros corretos
 
 
 class TelaConteudo(ctk.CTkFrame):
     def __init__(self, master, materia, nivel):
         super().__init__(master)
+        self.materia = materia  # Definir o atributo materia
+        self.nivel = nivel      # Definir o atributo nivel
         self.pack(fill="both", expand=True)
+        
         ctk.CTkLabel(self, text=f"Conteúdo - {materia['nome']} ({nivel['nivel']})", font=ctk.CTkFont(size=15, weight="bold")).pack(pady=10)
 
         texto = ctk.CTkTextbox(self, wrap="word", width=500, height=200)
@@ -190,7 +194,8 @@ class TelaConteudo(ctk.CTkFrame):
 
     def iniciar_quiz(self, nivel):
         self.pack_forget()
-        TelaQuiz(app, self.materia, nivel)  # Corrigido: Passar 'nivel' corretamente para TelaQuiz
+        TelaQuiz(app, self.materia, nivel)  # Usar self.materia, que agora está definido
+  # Corrigido: Passar 'nivel' corretamente para TelaQuiz
 
 
 class TelaQuiz(ctk.CTkFrame):
