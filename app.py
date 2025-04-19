@@ -1,15 +1,25 @@
 import customtkinter as ctk
 from cryptography.fernet import Fernet
 import json
-import time
+
+# Carrega os dados
+with open("teste.json", "r", encoding="utf-8") as f:
+    dados = json.load(f)
 
 # Configuração aparência
 ctk.set_appearance_mode('dark')
 ctk.set_default_color_theme('dark-blue')
 
-# Função para criptografar senha
+# Função para criptografar senha (não utilizada no momento)
 chave_secreta = Fernet.generate_key()
 fernet = Fernet(chave_secreta)
+
+# Criar a janela principal
+app = ctk.CTk()
+app.title('EduTec')
+app.geometry('400x400')
+
+frame_niveis = ctk.CTkFrame(app)
 
 # Função para limpar o input
 def limpa_input(event):
@@ -25,7 +35,7 @@ def limpa_input(event):
 def trocar_tela(tela):
     frame_login.pack_forget()
     frame_cadastro.pack_forget()
-    frame_principal.pack_forget()
+    frame_niveis.pack_forget()
     tela.pack(pady=20, padx=20)
 
     resultado_cadastro.configure(text='')
@@ -35,71 +45,44 @@ def trocar_tela(tela):
 def verificar_senha(*args):
     senha = campo_senha_cadastro.get()
 
-    if len(senha) >= 8:
-        caracteres_minimas.configure(text_color='green')
-    else:
-        caracteres_minimas.configure(text_color='red')
-
-    if any(char.isupper() for char in senha):
-        letra_maiuscula.configure(text_color='green')
-    else:
-        letra_maiuscula.configure(text_color='red')
-
-    if any(char.islower() for char in senha):
-        letra_minuscula.configure(text_color='green')
-    else:
-        letra_minuscula.configure(text_color='red')
-
-    if any(char.isdigit() for char in senha):
-        numeros.configure(text_color='green')
-    else:
-        numeros.configure(text_color='red')
-
-    if any(char in "!@#$%^&*()_+" for char in senha):
-        caracteres_especiais.configure(text_color='green')
-    else:
-        caracteres_especiais.configure(text_color='red')
+    caracteres_minimas.configure(text_color='green' if len(senha) >= 8 else 'red')
+    letra_maiuscula.configure(text_color='green' if any(char.isupper() for char in senha) else 'red')
+    letra_minuscula.configure(text_color='green' if any(char.islower() for char in senha) else 'red')
+    numeros.configure(text_color='green' if any(char.isdigit() for char in senha) else 'red')
+    caracteres_especiais.configure(text_color='green' if any(char in "!@#$%^&*()_+" for char in senha) else 'red')
 
 # Função para cadastro
 def cadastro():
     nome = campo_usuario_cadastro.get()
     senha = campo_senha_cadastro.get()
 
-    # Carrega ou cria o arquivo JSON
     try:
         with open('teste.json', 'r', encoding='utf-8') as arq:
             dados = json.load(arq)
     except (FileNotFoundError, json.JSONDecodeError):
-        dados = {'Usuarios': []} 
+        dados = {'Usuarios': []}
 
-
-    # Verifica campos vazios
     if nome == "" or senha == "":
         resultado_cadastro.configure(text="Preencha todos os campos!", text_color='red')
         return
-    
 
-    # Verifica se o usuário já existe
     for usuario in dados['Usuarios']:
         if usuario['nome'] == nome:
             resultado_cadastro.configure(text='Usuário já existe!', text_color='red')
-            return   
+            return
 
-
-    # Adiciona novo usuário
     dados['Usuarios'].append({
         'nome': nome,
         'senha': senha
     })
 
-    # Salva no JSON
     with open('teste.json', 'w', encoding='utf-8') as arq:
         json.dump(dados, arq, indent=4, ensure_ascii=False)
 
     trocar_tela(frame_login)
     limpa_input(campo_usuario_cadastro)
     limpa_input(campo_senha_cadastro)
-    
+
     resultado_cadastro.configure(text='Usuário cadastrado com sucesso!', text_color='green')
 
 # Função para login
@@ -111,84 +94,173 @@ def login():
         with open('teste.json', 'r', encoding='utf-8') as arq:
             dados = json.load(arq)
     except (FileNotFoundError, json.JSONDecodeError):
-        dados = {'Usuarios': []} 
+        dados = {'Usuarios': []}
 
     if usuario == "" or senha == "":
         resultado_login.configure(text='Usuario ou Senha incorretos.', text_color='red')
         return
 
-    # Verifica o login
     for user in dados['Usuarios']:
         if user['nome'] == usuario and user['senha'] == senha:
-            abrir_tela_principal()
+            frame_login.pack_forget()
+            TelaCursos(app)
             limpa_input(campo_usuario)
             limpa_input(campo_senha)
-            return           
+            return
+
     resultado_login.configure(text='Usuário ou senha incorretos.', text_color='red')
 
-# Função para abrir a tela principal após login
-def abrir_tela_principal():
-    trocar_tela(frame_principal)
-    texto_bem_vindo.configure(text=f"Bem-vindo, {campo_usuario.get()}!")
 
-# Função para abrir a tela de questões
-def abrir_questoes(materia):
-    global questoes, indice_questao, pontuacao
+class TelaCursos(ctk.CTkFrame):
+    def __init__(self, master):
+        super().__init__(master)
+        self.pack(fill="both", expand=True)
+        ctk.CTkLabel(self, text="Escolha a matéria:").pack(pady=10)
 
-    questoes = materia['questoes']
-    indice_questao = 0
-    pontuacao = 0
-    botao_a.pack(pady=5)
-    botao_b.pack(pady=5)
-    botao_c.pack(pady=5)
+        for materia in dados["Materias"]:
+            ctk.CTkButton(self, text=materia["nome"],
+                          command=lambda m=materia: self.ir_para_niveis(m)).pack(pady=5)
 
-    exibir_questao()
-    trocar_tela(frame_questoes)
+        # Botão de sair
+        self.botao_sair = ctk.CTkButton(self, text="❌ Sair", command=self.sair)
+        self.botao_sair.pack(pady=10)
 
-# Exibe cada questão
-def exibir_questao():
-    global indice_questao
+    def ir_para_niveis(self, materia):
+        self.pack_forget()
+        TelaNiveis(app, materia)
 
-    if indice_questao < len(questoes):
-        questao_atual = questoes[indice_questao]
-
-        texto_questao.configure(text=questao_atual['enunciado'], text_color='gray')
-        botao_a.configure(text=questao_atual['alternativa_a'])
-        botao_b.configure(text=questao_atual['alternativa_b'])
-        botao_c.configure(text=questao_atual['alternativa_c'])
-    else:
-        texto_questao.configure(text=f"Você acertou {pontuacao} de {len(questoes)} questões!", text_color='gray')
-        botao_a.pack_forget()
-        botao_b.pack_forget()
-        botao_c.pack_forget()
-        botao_voltar.pack(pady=5)
-
-# Verificar resposta
-def verificar_resposta(resposta):
-    global indice_questao, pontuacao
-
-    if resposta == questoes[indice_questao]['resposta']:
-        texto_questao.configure(text="Correto ✅", text_color='green')
-        pontuacao += 1
-    else:
-        texto_questao.configure(text="Incorreto ❌", text_color='red')
-
-    app.update()  # Atualiza a tela para mostrar o resultado
-    time.sleep(2)  # Delay de 2 segundos
-    
-    indice_questao += 1
-    exibir_questao()
-
-def voltar_para_inicio():
-    frame_questoes.pack_forget() 
-    botao_voltar.pack_forget()
-    trocar_tela(frame_principal)  # Isso seria uma função que redefine o layout inicial do quiz
+    def sair(self):
+        # Fecha a aplicação (alternativamente, você pode fazer algo como voltar para a tela inicial)
+        app.quit()  # Fecha a aplicação (caso deseje sair)
 
 
-# Criar a janela principal
-app = ctk.CTk()
-app.title('EduTec')
-app.geometry('400x400')
+class TelaNiveis(ctk.CTkFrame):
+    def __init__(self, master, materia):
+        super().__init__(master)
+        self.materia = materia
+        self.pack(fill="both", expand=True)
+
+        ctk.CTkLabel(self, text=f"Matéria: {materia['nome']}").pack(pady=10)
+        ctk.CTkLabel(self, text="Escolha o nível:").pack(pady=5)
+
+        for nivel in materia["niveis"]:
+            ctk.CTkButton(self, text=nivel["nivel"],
+                          command=lambda n=nivel: self.ir_para_opcoes(n)).pack(pady=5)
+
+    def ir_para_opcoes(self, nivel):
+        self.pack_forget()
+        TelaOpcoes(app, self.materia, nivel)
+
+
+class TelaOpcoes(ctk.CTkFrame):
+    def __init__(self, master, materia, nivel):
+        super().__init__(master)
+        self.materia = materia
+        self.nivel = nivel
+        self.pack(fill="both", expand=True)
+
+        ctk.CTkLabel(self, text=f"{materia['nome']} - {nivel['nivel']}", font=ctk.CTkFont(size=16, weight="bold")).pack(pady=10)
+        ctk.CTkLabel(self, text="O que você deseja fazer?").pack(pady=10)
+
+        ctk.CTkButton(self, text="📘 Ver conteúdo", command=self.ver_conteudo).pack(pady=5)
+        ctk.CTkButton(self, text="🧠 Responder Quiz", command=self.iniciar_quiz).pack(pady=5)
+
+    def ver_conteudo(self):
+        self.pack_forget()
+        TelaConteudo(app, self.materia, self.nivel)
+
+    def iniciar_quiz(self):
+        self.pack_forget()
+        TelaQuiz(app, self.materia, self.nivel)  # Corrigido: Passar 'nivel' corretamente para TelaQuiz
+
+
+class TelaConteudo(ctk.CTkFrame):
+    def __init__(self, master, materia, nivel):
+        super().__init__(master)
+        self.pack(fill="both", expand=True)
+        ctk.CTkLabel(self, text=f"Conteúdo - {materia['nome']} ({nivel['nivel']})", font=ctk.CTkFont(size=15, weight="bold")).pack(pady=10)
+
+        texto = ctk.CTkTextbox(self, wrap="word", width=500, height=200)
+        texto.insert("1.0", nivel["descricao"])
+        texto.configure(state="disabled")
+        texto.pack(pady=10)
+
+        ctk.CTkButton(self, text="🧠 Iniciar Quiz",
+                      command=lambda: self.iniciar_quiz(nivel)).pack(pady=5)
+
+    def iniciar_quiz(self, nivel):
+        self.pack_forget()
+        TelaQuiz(app, self.materia, nivel)  # Corrigido: Passar 'nivel' corretamente para TelaQuiz
+
+
+class TelaQuiz(ctk.CTkFrame):
+    def __init__(self, master, materia, nivel):
+        super().__init__(master)
+        self.questoes = nivel["questoes"]  # Usar 'nivel' para pegar as questões
+        self.materia = materia
+        self.index = 0
+        self.pontuacao = 0  # Contador de acertos
+        self.pack(fill="both", expand=True)
+        self.label_pergunta = ctk.CTkLabel(self, text="", wraplength=500)
+        self.label_pergunta.pack(pady=20)
+        self.botoes = []
+
+        for i in range(3):
+            botao = ctk.CTkButton(self, text="", command=lambda i=i: self.responder(i))
+            botao.pack(pady=5)
+            self.botoes.append(botao)
+
+        # Botão de voltar para cursos
+        self.botao_voltar = ctk.CTkButton(self, text="🔙 Voltar para Cursos", command=self.voltar_para_cursos)
+        self.botao_voltar.pack_forget()  # Inicialmente escondido
+
+        # Escondendo o botão de avançar
+        self.botao_avancar = ctk.CTkButton(self, text="➡ Avançar para o Próximo Nível", command=self.avancar_para_nivel_seguinte)
+        self.botao_avancar.pack_forget()  # Inicialmente escondido
+        
+        self.mostrar_questao()
+
+    def mostrar_questao(self):
+        if self.index < len(self.questoes):
+            q = self.questoes[self.index]
+            self.label_pergunta.configure(text=q["enunciado"])
+            self.botoes[0].configure(text=q["alternativa_a"])
+            self.botoes[1].configure(text=q["alternativa_b"])
+            self.botoes[2].configure(text=q["alternativa_c"])
+        else:
+            # Fim do quiz, exibe apenas o botão de voltar para cursos
+            resultado = f"Fim do Quiz! Sua pontuação: {self.pontuacao}/{len(self.questoes)}"
+            self.label_pergunta.configure(text=resultado)
+            for botao in self.botoes:
+                botao.pack_forget()
+
+            # Mostra apenas o botão de voltar para cursos
+            self.botao_voltar.pack(pady=10)
+
+    def responder(self, i):
+        q = self.questoes[self.index]
+        resposta_correta = q["resposta"]
+
+        if (i == 0 and resposta_correta == "alternativa_a") or \
+           (i == 1 and resposta_correta == "alternativa_b") or \
+           (i == 2 and resposta_correta == "alternativa_c"):
+            self.pontuacao += 1
+            resultado = "Resposta correta! ✅"
+        else:
+            resultado = f"Resposta errada! ❌ A resposta correta era: {q[resposta_correta]}"  # Corrigido aqui
+
+        self.index += 1
+        self.label_pergunta.configure(text=resultado)
+        self.after(1000, self.mostrar_questao)  # Espera 1 segundo antes de mostrar a próxima questão
+
+    def voltar_para_cursos(self):
+        self.pack_forget()
+        TelaCursos(app)  # Aqui é o que acontece ao clicar no botão de voltar para cursos
+
+    def avancar_para_nivel_seguinte(self):
+        pass  # A função foi desnecessária, pois removemos o botão de avançar
+
+
 
 # ---------------- Tela de Login -----------------
 frame_login = ctk.CTkFrame(app)
@@ -198,7 +270,7 @@ campo_usuario = ctk.CTkEntry(frame_login, placeholder_text="Digite o Usuario")
 campo_usuario.pack(pady=5)
 
 ctk.CTkLabel(frame_login, text="Senha").pack(pady=5)
-campo_senha = ctk.CTkEntry(frame_login, placeholder_text="Digite sua Senha" ,show='*')
+campo_senha = ctk.CTkEntry(frame_login, placeholder_text="Digite sua Senha", show='*')
 campo_senha.pack(pady=5)
 
 resultado_login = ctk.CTkLabel(frame_login, text="")
@@ -215,7 +287,7 @@ campo_usuario_cadastro = ctk.CTkEntry(frame_cadastro, placeholder_text="Digite u
 campo_usuario_cadastro.pack(pady=5)
 
 ctk.CTkLabel(frame_cadastro, text="Senha").pack(pady=5)
-campo_senha_cadastro = ctk.CTkEntry(frame_cadastro, placeholder_text="Digite uma senha" ,show='*')
+campo_senha_cadastro = ctk.CTkEntry(frame_cadastro, placeholder_text="Digite uma senha", show='*')
 campo_senha_cadastro.pack(pady=5)
 
 caracteres_minimas = ctk.CTkLabel(frame_cadastro, text="Mínimo 8 caracteres")
@@ -239,45 +311,7 @@ resultado_cadastro.pack(pady=10)
 ctk.CTkButton(frame_cadastro, text="Cadastrar", command=cadastro).pack(pady=5)
 ctk.CTkButton(frame_cadastro, text="Voltar ao Login", command=lambda: trocar_tela(frame_login)).pack(pady=5)
 
-# Conecta a função de verificação em tempo real
 campo_senha_cadastro.bind("<KeyRelease>", verificar_senha)
-# ----------------- Tela de Questões -----------------
-frame_questoes = ctk.CTkFrame(app)
-texto_questao = ctk.CTkLabel(frame_questoes, text="")
-texto_questao.pack(pady=10)
-
-botao_a = ctk.CTkButton(frame_questoes, text="", command=lambda: verificar_resposta('alternativa_a'))
-botao_a.pack(pady=5)
-
-botao_b = ctk.CTkButton(frame_questoes, text="", command=lambda: verificar_resposta('alternativa_b'))
-botao_b.pack(pady=5)
-
-botao_c = ctk.CTkButton(frame_questoes, text="", command=lambda: verificar_resposta('alternativa_c'))
-botao_c.pack(pady=5)
-
-botao_voltar = ctk.CTkButton(frame_questoes, text="Voltar para incio", command=lambda: voltar_para_inicio())
-botao_voltar.pack_forget()
-
-# ---------------- Tela Principal -----------------
-frame_principal = ctk.CTkFrame(app)
-
-texto_bem_vindo = ctk.CTkLabel(frame_principal, text="", font=('Arial', 18))
-texto_bem_vindo.pack(pady=20)
-
-# Tenta abrir o arquivo JSON
-try:
-    with open('teste.json', 'r', encoding='utf-8') as arq:
-        dados = json.load(arq)
-except (FileNotFoundError, json.JSONDecodeError):
-    dados = {'Materias': []}  # Garantir que exista uma chave 'Materias'
-
-# Iterar sobre as matérias
-for materia in dados['Materias']:
-    # Criar botão para cada matéria
-    ctk.CTkButton(frame_principal, text=materia['nome'], command=lambda m=materia: abrir_questoes(m)).pack(pady=10)
-
-
-ctk.CTkButton(frame_principal, text="Sair", command=lambda: trocar_tela(frame_login)).pack(pady=10)
 
 # Inicia na tela de login
 trocar_tela(frame_login)
