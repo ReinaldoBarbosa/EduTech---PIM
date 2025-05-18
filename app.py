@@ -121,7 +121,7 @@ class TelaLogin(ctk.CTkFrame):
 
         ctk.CTkButton(self, text='LOGIN', fg_color='#0945f3', hover_color='#072bc7', width=300, cursor="hand2", command=self.login).place(x=25, y=265)
 
-        ctk.CTkButton(self, text='CADASTRO', fg_color='#0945f3', hover_color='#072bc7', width=300, cursor="hand2", command=lambda: trocar_tela(TelaCadastro)).place(x=25, y=310)
+        ctk.CTkButton(self, text='CADASTRO', fg_color='#0945f3', hover_color='#072bc7', width=300, cursor="hand2", command=lambda: trocar_tela(TelaEscolhaPerfil)).place(x=25, y=310)
 
     def login(self):
         email = self.entry1.get()
@@ -159,10 +159,31 @@ class TelaLogin(ctk.CTkFrame):
 
         messagebox.showerror("Erro", "Email ou senha incorretos.")
 
+class TelaEscolhaPerfil(ctk.CTkFrame):
+    def __init__(self, master):
+        super().__init__(master, fg_color="#1A1A1A", width=400, height=300)
+
+        ctk.CTkLabel(self, text="Como você deseja se cadastrar?", font=("Roboto", 18, "bold"), text_color="#0945f3").place(x=50, y=30)
+
+        ctk.CTkButton(self, text="🎓\n Sou Aluno", width=140, height=100, fg_color="#1f1f1f", command=self.ir_para_aluno).place(x=40, y=90)
+        ctk.CTkButton(self, text="👨‍🏫\n Sou Professor", width=140, height=100, fg_color="#1f1f1f", command=self.ir_para_professor).place(x=220, y=90)
+
+        ctk.CTkButton(self, text="Voltar", width=300, fg_color="#3a3a3a", hover_color="#0945f3", command=self.voltar).place(x=50, y=220)
+
+    def ir_para_aluno(self):
+        trocar_tela(lambda master: TelaCadastro(master, "aluno"))
+
+    def ir_para_professor(self):
+        trocar_tela(lambda master: TelaCadastro(master, "professor"))
+
+    def voltar(self):
+        trocar_tela(TelaLogin)
+
 # Tela de Cadastro
 class TelaCadastro(ctk.CTkFrame):
-    def __init__(self, master):
+    def __init__(self, master, status):
         super().__init__(master, width=357, height=400, fg_color="#1A1A1A")
+        self.status = status
 
         ctk.CTkLabel(self, text="Cadastro", text_color="#0945f3", font=("Roboto", 20, "bold")).place(x=130, y=30)
 
@@ -256,7 +277,7 @@ class TelaCadastro(ctk.CTkFrame):
 
         if enviado:
             messagebox.showinfo("Verificação", f"Um código foi enviado para {email}.")
-            trocar_tela(lambda master: TelaVerificacaoCodigo(master, nome, email, senha, codigo))
+            trocar_tela(lambda master: TelaVerificacaoCodigo(master, nome, email, senha, codigo, self.status))
         else:
             messagebox.showerror("Erro", "Não foi possível enviar o e-mail. Verifique sua conexão ou tente outro e-mail.")
 
@@ -264,13 +285,14 @@ class TelaCadastro(ctk.CTkFrame):
         trocar_tela(TelaLogin)
 
 class TelaVerificacaoCodigo(ctk.CTkFrame):
-    def __init__(self, master, nome, email, senha, codigo):
+    def __init__(self, master, nome, email, senha, codigo, status):
         super().__init__(master, width=357, height=400, fg_color="#1A1A1A")
 
         self.nome = nome
         self.email = email
         self.senha = informar_senha(senha)
         self.codigo_esperado = codigo
+        self.status = status
 
         ctk.CTkLabel(self, text="Verificação de E-mail", font=("Roboto", 20, "bold"), text_color="#0945f3").place(x=70, y=40)
 
@@ -300,6 +322,7 @@ class TelaVerificacaoCodigo(ctk.CTkFrame):
                 "Rank": "Bronze",
                 "acessos": 0,
                 "tempo_total_min": 0,
+                "status": self.status,
                 "materias": {}
             })
 
@@ -317,15 +340,13 @@ class TelaPainel(ctk.CTkFrame):
     def __init__(self, master, usuario_log):
         super().__init__(master, width=555, height=400, fg_color="#1A1A1A")
         self.usuario_log = usuario_log  # Armazena o usuário logado
-
-        cor_texto = "blue"
-        cor_fundo = "#1f1f1f"
+        self.cor_texto = "blue"
+        self.cor_fundo = "#1f1f1f"
 
         # Título personalizado
         frame_bem_vindo = ctk.CTkFrame(self, fg_color="transparent")
         frame_bem_vindo.place(x=34, y=30)
 
-        # Label prefixo e nome do usuário
         label_prefixo = ctk.CTkLabel(
             frame_bem_vindo,
             text="Seja Bem Vindo, ",
@@ -338,67 +359,90 @@ class TelaPainel(ctk.CTkFrame):
             frame_bem_vindo,
             text="Usuário!",
             font=("Roboto", 24, "bold"),
-            text_color="blue"
+            text_color=self.cor_texto
         )
         self.label_nome.pack(side="left")
 
+        # Construção da interface conforme status do usuário
+        self.construir_tela()
+
+        # Botão de sair
+        ctk.CTkButton(
+            self,
+            text="← Sair",
+            width=229,
+            height=38,
+            fg_color=self.cor_fundo,
+            hover_color="#2c2c2c",
+            compound="right",
+            corner_radius=6,
+            command=self.logout
+        ).place(x=34, y=320)
+
+        # Botão Ver Cursos
+        ctk.CTkButton(
+            self,
+            text="Ver Cursos",
+            width=229,
+            height=38,
+            fg_color=self.cor_fundo,
+            hover_color="#2c2c2c",
+            text_color=self.cor_texto,
+            compound="right",
+            corner_radius=6,
+            command=self.curso
+        ).place(x=297, y=320)
+
+        # Atualiza as informações do usuário
+        self.atualizar_informacoes_usuario()
+
+    def construir_tela(self):
+        usuario = self.carregar_dados_usuario(self.usuario_log)
+
+        if usuario:
+            if usuario['status'] == 'aluno':
+                self.telaAluno()
+            elif usuario['status'] == 'professor':
+                self.telaProfessor()
+
+    def telaAluno(self):
         # Caixa de progresso
-        self.seu_progresso = ctk.CTkFrame(master=self, width=140, height=97, fg_color="#212121")
+        self.seu_progresso = ctk.CTkFrame(self, width=140, height=97, fg_color="#212121")
         self.seu_progresso.place(x=34, y=99)
 
-        label_progresso = ctk.CTkLabel(self.seu_progresso, text="Seu\nProgresso", font=("Roboto", 10))
-        label_progresso.place(relx=0.5, rely=0.2, anchor="center")
-
-        self.label_porcentagem = ctk.CTkLabel(self.seu_progresso, text="50%", font=("Roboto", 20, "bold"))
+        ctk.CTkLabel(self.seu_progresso, text="Seu\nProgresso", font=("Roboto", 10)).place(relx=0.5, rely=0.2, anchor="center")
+        self.label_porcentagem = ctk.CTkLabel(self.seu_progresso, text="0%", font=("Roboto", 20, "bold"))
         self.label_porcentagem.place(relx=0.5, rely=0.7, anchor="center")
 
         # Caixa de pontuação
-        self.pontuacao = ctk.CTkFrame(master=self, width=140, height=97, fg_color="#212121")
+        self.pontuacao = ctk.CTkFrame(self, width=140, height=97, fg_color="#212121")
         self.pontuacao.place(x=208, y=99)
 
-        label_pontuacao = ctk.CTkLabel(self.pontuacao, text="Pontuação", font=("Roboto", 10))
-        label_pontuacao.place(relx=0.5, rely=0.2, anchor="center")
-
-        self.pontuacao_aluno = ctk.CTkLabel(self.pontuacao, text="10.000", font=("Roboto", 20, "bold"))
+        ctk.CTkLabel(self.pontuacao, text="Pontuação", font=("Roboto", 10)).place(relx=0.5, rely=0.2, anchor="center")
+        self.pontuacao_aluno = ctk.CTkLabel(self.pontuacao, text="0", font=("Roboto", 20, "bold"))
         self.pontuacao_aluno.place(relx=0.5, rely=0.7, anchor="center")
 
         # Caixa de nível
-        self.nivel_atual = ctk.CTkFrame(master=self, width=140, height=97, fg_color="#212121")
+        self.nivel_atual = ctk.CTkFrame(self, width=140, height=97, fg_color="#212121")
         self.nivel_atual.place(x=384, y=99)
 
-        label_nivel = ctk.CTkLabel(self.nivel_atual, text="Seu Nível\nAtual", font=("Roboto", 10))
-        label_nivel.place(relx=0.5, rely=0.2, anchor="center")
-
+        ctk.CTkLabel(self.nivel_atual, text="Seu Nível\nAtual", font=("Roboto", 10)).place(relx=0.5, rely=0.2, anchor="center")
         self.nivel = ctk.CTkLabel(self.nivel_atual, text="BRONZE", font=("Roboto", 20, "bold"))
         self.nivel.place(relx=0.5, rely=0.7, anchor="center")
 
+    def telaProfessor(self):
         ctk.CTkButton(
-                self,
-                text="← Sair",
-                width=229,
-                height=38,
-                fg_color=cor_fundo,
-                hover_color="#2c2c2c",
-                compound="right",
-                corner_radius=6,
-                command=self.logout
-            ).place(x=34, y=320)
-        
-        ctk.CTkButton(
-                self,
-                text="Ver Cursos",
-                width=229,
-                height=38,
-                fg_color=cor_fundo,
-                hover_color="#2c2c2c",
-                text_color=cor_texto,
-                compound="right",
-                corner_radius=6,
-                command=self.curso
-            ).place(x=297, y=320)
-
-        # Atualiza as informações do usuário assim que a tela é criada
-        self.atualizar_informacoes_usuario()
+            self,
+            text="Novo Curso",
+            width=140,
+            height=97,
+            fg_color=self.cor_fundo,
+            hover_color="#2c2c2c",
+            text_color=self.cor_texto,
+            compound="right",
+            corner_radius=6,
+            command=self.cadastrar_curso
+        ).place(x=208, y=99)
 
     def carregar_dados_usuario(self, usuario_log):
         with open("usuarios.json", "r", encoding="utf-8") as f:
@@ -416,17 +460,24 @@ class TelaPainel(ctk.CTkFrame):
             self.label_nome.configure(text=f"{usuario['nome']}!")
 
             progresso = usuario.get("progresso", 0)
-            self.label_porcentagem.configure(text=f"{progresso}%")
+            if hasattr(self, "label_porcentagem"):
+                self.label_porcentagem.configure(text=f"{progresso}%")
 
             pontuacao = usuario.get("pontuacao", 0)
-            self.pontuacao_aluno.configure(text=f"{pontuacao}")
+            if hasattr(self, "pontuacao_aluno"):
+                self.pontuacao_aluno.configure(text=str(pontuacao))
 
             nivel = usuario.get("nivel", "BRONZE")
-            self.nivel.configure(text=nivel)
+            if hasattr(self, "nivel"):
+                self.nivel.configure(text=nivel)
 
     def curso(self):
         self.place_forget()
         trocar_tela(lambda master: TelaCursos(master))
+
+    def cadastrar_curso(self):
+        self.place_forget()
+        trocar_tela(lambda master: CadastroCurso(master))
 
     def logout(self):
         usuario = self.carregar_dados_usuario(self.usuario_log)
@@ -448,7 +499,6 @@ class TelaPainel(ctk.CTkFrame):
                 json.dump(dados, f, indent=4, ensure_ascii=False)
 
         trocar_tela(TelaLogin)
-
 # Tela Cursos
 class TelaCursos(ctk.CTkFrame):
     def __init__(self, master):
@@ -463,7 +513,7 @@ class TelaCursos(ctk.CTkFrame):
 
         # Carregar as matérias do JSON
         with open("teste.json", "r", encoding="utf-8") as f:
-            materias = json.load(f)["Materias"]
+            materias = json.load(f)
 
         colunas = 2
         for i, materia in enumerate(materias):
@@ -533,6 +583,135 @@ class TelaCursos(ctk.CTkFrame):
 
     def sair(self):
         self.grid_forget()
+        trocar_tela(lambda master: TelaPainel(master, usuario_log))
+
+class CadastroCurso(ctk.CTkFrame):
+    def __init__(self, master):
+        super().__init__(master, width=555, height=400, fg_color="#1A1A1A")
+        self.pack_propagate(False)
+
+        self.nome_var = ctk.StringVar()
+
+        ctk.CTkLabel(self, text="Nome do Curso:").pack(pady=(10, 0))
+        ctk.CTkEntry(self, textvariable=self.nome_var, width=400).pack(pady=(0, 10))
+
+        self.tabs = ctk.CTkTabview(self, width=530, height=250)
+        self.tabs.pack()
+
+        self.niveis = ["Iniciante", "Intermediario", "Avancado"]
+        self.descricoes = {}
+        self.questoes = {}
+
+        for nivel in self.niveis:
+            tab = self.tabs.add(nivel)
+            self._criar_scroll_com_formulario(tab, nivel)
+
+        ctk.CTkButton(self, text="Salvar Curso", command=self.salvar).pack(pady=10)
+
+    def _criar_scroll_com_formulario(self, parent, nivel):
+        container = ctk.CTkFrame(parent)
+        container.pack(fill="both", expand=True)
+
+        canvas = ctk.CTkCanvas(container, width=510, height=230, bg="#1A1A1A", highlightthickness=0)
+        scrollbar = ctk.CTkScrollbar(container, orientation="vertical", command=canvas.yview)
+        canvas.configure(yscrollcommand=scrollbar.set)
+
+        scrollable_frame = ctk.CTkFrame(canvas)
+        scrollable_frame.bind(
+            "<Configure>",
+            lambda e: canvas.configure(scrollregion=canvas.bbox("all"))
+        )
+
+        canvas.create_window((0, 0), window=scrollable_frame, anchor="nw")
+
+        canvas.pack(side="left", fill="both", expand=True)
+        scrollbar.pack(side="right", fill="y")
+
+        # Formulário dentro do scroll
+        self.descricoes[nivel] = ctk.CTkTextbox(scrollable_frame, height=60, width=490, border_width=1, corner_radius=6, wrap="word", font=("Arial", 14))
+        ctk.CTkLabel(scrollable_frame, text="Descrição do Conteúdo:").pack(anchor="w", padx=5)
+        self.descricoes[nivel].pack(pady=5, padx=5)
+
+        self.questoes[nivel] = []
+
+        for i in range(3):
+            frame_q = ctk.CTkFrame(scrollable_frame)
+            frame_q.pack(pady=5, fill="x", padx=5)
+
+            enunciado = ctk.StringVar()
+            alt_a = ctk.StringVar()
+            alt_b = ctk.StringVar()
+            alt_c = ctk.StringVar()
+            resposta = ctk.StringVar(value="alternativa_a")
+
+            ctk.CTkLabel(frame_q, text=f"Questão {i+1} - Enunciado:").pack(anchor="w")
+            ctk.CTkEntry(frame_q, textvariable=enunciado, width=490).pack()
+            ctk.CTkLabel(frame_q, text="Alternativas:").pack(anchor="w")
+            ctk.CTkEntry(frame_q, textvariable=alt_a, placeholder_text="a)").pack()
+            ctk.CTkEntry(frame_q, textvariable=alt_b, placeholder_text="b)").pack()
+            ctk.CTkEntry(frame_q, textvariable=alt_c, placeholder_text="c)").pack()
+
+            ctk.CTkLabel(frame_q, text="Resposta correta:").pack(anchor="w")
+            ctk.CTkOptionMenu(frame_q, values=["alternativa_a", "alternativa_b", "alternativa_c"],
+                              variable=resposta).pack()
+
+            self.questoes[nivel].append({
+                "enunciado": enunciado,
+                "alternativa_a": alt_a,
+                "alternativa_b": alt_b,
+                "alternativa_c": alt_c,
+                "resposta": resposta
+            })
+
+    def salvar(self):
+        nome = self.nome_var.get().strip()
+        if not nome:
+            messagebox.showerror("Erro", "Informe o nome do curso.")
+            return
+
+        dados = {
+            "nome": nome,
+            "niveis": []
+        }
+
+        for nivel in self.niveis:
+            descricao = self.descricoes[nivel].get("1.0", "end").strip()
+            questoes_formatadas = []
+
+            for q in self.questoes[nivel]:
+                questoes_formatadas.append({
+                    "enunciado": q["enunciado"].get(),
+                    "alternativa_a": q["alternativa_a"].get(),
+                    "alternativa_b": q["alternativa_b"].get(),
+                    "alternativa_c": q["alternativa_c"].get(),
+                    "resposta": q["resposta"].get()
+                })
+
+            dados["niveis"].append({
+                "nivel": nivel,
+                "descricao": descricao,
+                "questoes": questoes_formatadas
+            })
+
+        # Tenta carregar os cursos existentes
+        caminho_arquivo = "teste.json"
+        if os.path.exists(caminho_arquivo):
+            with open(caminho_arquivo, "r", encoding="utf-8") as f:
+                try:
+                    cursos = json.load(f)
+                except json.JSONDecodeError:
+                    cursos = []
+        else:
+            cursos = []
+
+        # Adiciona o novo curso à lista
+        cursos.append(dados)
+
+        # Salva todos os cursos de volta no arquivo
+        with open(caminho_arquivo, "w", encoding="utf-8") as f:
+            json.dump(cursos, f, ensure_ascii=False, indent=4)
+
+        messagebox.showinfo("Sucesso", "Curso salvo com sucesso!")
         trocar_tela(lambda master: TelaPainel(master, usuario_log))
 
 # Tela Niveis

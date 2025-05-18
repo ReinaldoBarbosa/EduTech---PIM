@@ -1,348 +1,174 @@
-{
-    "Materias": [
-        {
-            "nome": "Fundamentos de Python",
-            "niveis": [
-                {
-                    "nivel": "Iniciante",
-                    "descricao": "Python é uma linguagem de programação muito usada por iniciantes por sua simplicidade e legibilidade. Ela permite criar programas de forma intuitiva, utilizando conceitos como variáveis, operadores, condicionais (if/else) e estruturas de repetição (while/for).",
-                    "questoes": [
-                        {
-                            "enunciado": "Qual dessas opções representa uma variável válida em Python?",
-                            "alternativa_a": "a) 2nome",
-                            "alternativa_b": "b) nome_usuario",
-                            "alternativa_c": "c) nome-usuario",
-                            "resposta": "alternativa_b"
-                        },
-                        {
-                            "enunciado": "Qual operador é usado para comparação de igualdade em Python?",
-                            "alternativa_a": "a) =",
-                            "alternativa_b": "b) ==",
-                            "alternativa_c": "c) !=",
-                            "resposta": "alternativa_b"
-                        },
-                        {
-                            "enunciado": "O que faz o comando \"print('Olá Mundo')\"?",
-                            "alternativa_a": "a) Lê uma entrada do usuário",
-                            "alternativa_b": "b) Cria uma variável",
-                            "alternativa_c": "c) Exibe uma mensagem na tela",
-                            "resposta": "alternativa_c"
-                        }
-                    ]
-                },
-                {
-                    "nivel": "intermediario",
-                    "descricao": "Python é uma linguagem de programação muito usada por iniciantes por sua simplicidade e legibilidade. Ela permite criar programas de forma intuitiva, utilizando conceitos como variáveis, operadores, condicionais (if/else) e estruturas de repetição (while/for).",
-                    "questoes": [
-                        {
-                            "enunciado": "Como se define uma função em Python?",
-                            "alternativa_a": "a) def funcao():",
-                            "alternativa_b": "b) function funcao()",
-                            "alternativa_c": "c) criar funcao()",
-                            "resposta": "alternativa_a"
-                        },
-                        {
-                            "enunciado": "Qual comando abre um arquivo para leitura em Python?",
-                            "alternativa_a": "a) open('arquivo.txt', 'r')",
-                            "alternativa_b": "b) abrir('arquivo.txt')",
-                            "alternativa_c": "c) file('arquivo.txt')",
-                            "resposta": "alternativa_a"
-                        },
-                        {
-                            "enunciado": "Como adicionar um item ao final de uma lista?",
-                            "alternativa_a": "a) lista.add()",
-                            "alternativa_b": "b) lista.push()",
-                            "alternativa_c": "c) lista.append()",
-                            "resposta": "alternativa_c"
-                        }
-                    ]
-                },
-                {
-                    "nivel": "Avancado",
-                    "descricao": "Python é utilizado para automações complexas, integração com APIs, uso de bibliotecas como NumPy, pandas, e frameworks como Flask e Django.",
-                    "questoes": [
-                        {
-                            "enunciado": "O que faz a biblioteca pandas?",
-                            "alternativa_a": "a) Gera gráficos interativos",
-                            "alternativa_b": "b) Manipula grandes volumes de dados em tabelas",
-                            "alternativa_c": "c) Realiza testes automatizados",
-                            "resposta": "alternativa_b"
-                        },
-                        {
-                            "enunciado": "Como criar um ambiente virtual em Python?",
-                            "alternativa_a": "a) python create venv",
-                            "alternativa_b": "b) python -m venv nome_do_ambiente",
-                            "alternativa_c": "c) venv start",
-                            "resposta": "alternativa_b"
-                        },
-                        {
-                            "enunciado": "Qual comando ativa um ambiente virtual no Windows?",
-                            "alternativa_a": "a) source venv/bin/activate",
-                            "alternativa_b": "b) activate venv",
-                            "alternativa_c": "c) venv\\Scripts\\activate",
-                            "resposta": "alternativa_c"
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "nome": "Estruturas de Dados em Python",
-            "niveis": [
-                {
-                    "nivel": "Iniciante",
-                    "descricao": "Estruturas de dados como listas e tuplas são fundamentais em Python. Listas podem ser modificadas, enquanto tuplas são imutáveis.",
-                    "questoes": [
-                        {
-                            "enunciado": "Qual estrutura permite alterações em seus elementos?",
-                            "alternativa_a": "a) Tupla",
-                            "alternativa_b": "b) Lista",
-                            "alternativa_c": "c) Conjunto",
-                            "resposta": "alternativa_b"
-                        },
-                        {
-                            "enunciado": "Como criar uma lista vazia?",
-                            "alternativa_a": "a) lista = []",
-                            "alternativa_b": "b) lista = {}",
-                            "alternativa_c": "c) lista = ()",
-                            "resposta": "alternativa_a"
-                        },
-                        {
-                            "enunciado": "Qual função retorna o tamanho de uma lista?",
-                            "alternativa_a": "a) length()",
-                            "alternativa_b": "b) count()",
-                            "alternativa_c": "c) len()",
-                            "resposta": "alternativa_c"
-                        }
-                    ]
-                },
-                {
-                    "nivel": "intermediario",
-                    "descricao": "Inclui o uso de dicionários (pares chave-valor) e conjuntos (sem elementos repetidos).",
-                    "questoes": [
-                        {
-                            "enunciado": "Como acessar um valor de dicionário pela chave?",
-                            "alternativa_a": "a) dict.chave",
-                            "alternativa_b": "b) dict[chave]",
-                            "alternativa_c": "c) dict->chave",
-                            "resposta": "alternativa_b"
-                        },
-                        {
-                            "enunciado": "Qual estrutura não permite duplicatas?",
-                            "alternativa_a": "a) Lista",
-                            "alternativa_b": "b) Tupla",
-                            "alternativa_c": "c) Conjunto",
-                            "resposta": "alternativa_c"
-                        },
-                        {
-                            "enunciado": "Qual método adiciona itens a um conjunto?",
-                            "alternativa_a": "a) add()",
-                            "alternativa_b": "b) append()",
-                            "alternativa_c": "c) insert()",
-                            "resposta": "alternativa_a"
-                        }
-                    ]
-                },
-                {
-                    "nivel": "Avancado",
-                    "descricao": "Inclui o uso de estruturas como filas, pilhas e árvores para algoritmos mais complexos.",
-                    "questoes": [
-                        {
-                            "enunciado": "Qual estrutura funciona com a lógica FIFO?",
-                            "alternativa_a": "a) Pilha",
-                            "alternativa_b": "b) Fila",
-                            "alternativa_c": "c) Dicionário",
-                            "resposta": "alternativa_b"
-                        },
-                        {
-                            "enunciado": "Qual módulo Python fornece implementações eficientes de listas, filas e pilhas?",
-                            "alternativa_a": "a) structures",
-                            "alternativa_b": "b) collections",
-                            "alternativa_c": "c) itertools",
-                            "resposta": "alternativa_b"
-                        },
-                        {
-                            "enunciado": "O que é uma árvore binária?",
-                            "alternativa_a": "a) Um tipo de lista ordenada",
-                            "alternativa_b": "b) Uma estrutura onde cada nó tem no máximo dois filhos",
-                            "alternativa_c": "c) Um tipo de dicionário",
-                            "resposta": "alternativa_b"
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "nome": "Python",
-            "niveis": [
-                {
-                    "nivel": "Iniciante",
-                    "descricao": "Python é uma linguagem de programação muito usada por iniciantes por sua simplicidade e legibilidade. Ela permite criar programas de forma intuitiva, utilizando conceitos como variáveis, operadores, condicionais (if/else) e estruturas de repetição (while/for).",
-                    "questoes": [
-                        {
-                            "enunciado": "Qual dessas opções representa uma variável válida em Python?",
-                            "alternativa_a": "a) 2nome",
-                            "alternativa_b": "b) nome_usuario",
-                            "alternativa_c": "c) nome-usuario",
-                            "resposta": "alternativa_b"
-                        },
-                        {
-                            "enunciado": "Qual operador é usado para comparação de igualdade em Python?",
-                            "alternativa_a": "a) =",
-                            "alternativa_b": "b) ==",
-                            "alternativa_c": "c) !=",
-                            "resposta": "alternativa_b"
-                        },
-                        {
-                            "enunciado": "O que faz o comando \"print('Olá Mundo')\"?",
-                            "alternativa_a": "a) Lê uma entrada do usuário",
-                            "alternativa_b": "b) Cria uma variável",
-                            "alternativa_c": "c) Exibe uma mensagem na tela",
-                            "resposta": "alternativa_c"
-                        }
-                    ]
-                },
-                {
-                    "nivel": "intermediario",
-                    "descricao": "Python oferece recursos mais avançados como listas, dicionários, funções com parâmetros padrão e manipulação de arquivos.",
-                    "questoes": [
-                        {
-                            "enunciado": "Como se define uma função em Python?",
-                            "alternativa_a": "a) def funcao():",
-                            "alternativa_b": "b) function funcao()",
-                            "alternativa_c": "c) criar funcao()",
-                            "resposta": "alternativa_a"
-                        },
-                        {
-                            "enunciado": "Qual comando abre um arquivo para leitura em Python?",
-                            "alternativa_a": "a) open('arquivo.txt', 'r')",
-                            "alternativa_b": "b) abrir('arquivo.txt')",
-                            "alternativa_c": "c) file('arquivo.txt')",
-                            "resposta": "alternativa_a"
-                        },
-                        {
-                            "enunciado": "Como adicionar um item ao final de uma lista?",
-                            "alternativa_a": "a) lista.add()",
-                            "alternativa_b": "b) lista.push()",
-                            "alternativa_c": "c) lista.append()",
-                            "resposta": "alternativa_c"
-                        }
-                    ]
-                },
-                {
-                    "nivel": "Avancado",
-                    "descricao": "Python é utilizado para automações complexas, integração com APIs, uso de bibliotecas como NumPy, pandas, e frameworks como Flask e Django.",
-                    "questoes": [
-                        {
-                            "enunciado": "O que faz a biblioteca pandas?",
-                            "alternativa_a": "a) Gera gráficos interativos",
-                            "alternativa_b": "b) Manipula grandes volumes de dados em tabelas",
-                            "alternativa_c": "c) Realiza testes automatizados",
-                            "resposta": "alternativa_b"
-                        },
-                        {
-                            "enunciado": "Como criar um ambiente virtual em Python?",
-                            "alternativa_a": "a) python create venv",
-                            "alternativa_b": "b) python -m venv nome_do_ambiente",
-                            "alternativa_c": "c) venv start",
-                            "resposta": "alternativa_b"
-                        },
-                        {
-                            "enunciado": "Qual comando ativa um ambiente virtual no Windows?",
-                            "alternativa_a": "a) source venv/bin/activate",
-                            "alternativa_b": "b) activate venv",
-                            "alternativa_c": "c) venv\\Scripts\\activate",
-                            "resposta": "alternativa_c"
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "nome": "Estruturas de Dados ",
-            "niveis": [
-                {
-                    "nivel": "Iniciante",
-                    "descricao": "Estruturas de dados como listas e tuplas são fundamentais em Python. Listas podem ser modificadas, enquanto tuplas são imutáveis.",
-                    "questoes": [
-                        {
-                            "enunciado": "Qual estrutura permite alterações em seus elementos?",
-                            "alternativa_a": "a) Tupla",
-                            "alternativa_b": "b) Lista",
-                            "alternativa_c": "c) Conjunto",
-                            "resposta": "alternativa_b"
-                        },
-                        {
-                            "enunciado": "Como criar uma lista vazia?",
-                            "alternativa_a": "a) lista = []",
-                            "alternativa_b": "b) lista = {}",
-                            "alternativa_c": "c) lista = ()",
-                            "resposta": "alternativa_a"
-                        },
-                        {
-                            "enunciado": "Qual função retorna o tamanho de uma lista?",
-                            "alternativa_a": "a) length()",
-                            "alternativa_b": "b) count()",
-                            "alternativa_c": "c) len()",
-                            "resposta": "alternativa_c"
-                        }
-                    ]
-                },
-                {
-                    "nivel": "intermediario",
-                    "descricao": "Inclui o uso de dicionários (pares chave-valor) e conjuntos (sem elementos repetidos).",
-                    "questoes": [
-                        {
-                            "enunciado": "Como acessar um valor de dicionário pela chave?",
-                            "alternativa_a": "a) dict.chave",
-                            "alternativa_b": "b) dict[chave]",
-                            "alternativa_c": "c) dict->chave",
-                            "resposta": "alternativa_b"
-                        },
-                        {
-                            "enunciado": "Qual estrutura não permite duplicatas?",
-                            "alternativa_a": "a) Lista",
-                            "alternativa_b": "b) Tupla",
-                            "alternativa_c": "c) Conjunto",
-                            "resposta": "alternativa_c"
-                        },
-                        {
-                            "enunciado": "Qual método adiciona itens a um conjunto?",
-                            "alternativa_a": "a) add()",
-                            "alternativa_b": "b) append()",
-                            "alternativa_c": "c) insert()",
-                            "resposta": "alternativa_a"
-                        }
-                    ]
-                },
-                {
-                    "nivel": "Avancado",
-                    "descricao": "Inclui o uso de estruturas como filas, pilhas e árvores para algoritmos mais complexos.",
-                    "questoes": [
-                        {
-                            "enunciado": "Qual estrutura funciona com a lógica FIFO?",
-                            "alternativa_a": "a) Pilha",
-                            "alternativa_b": "b) Fila",
-                            "alternativa_c": "c) Dicionário",
-                            "resposta": "alternativa_b"
-                        },
-                        {
-                            "enunciado": "Qual módulo Python fornece implementações eficientes de listas, filas e pilhas?",
-                            "alternativa_a": "a) structures",
-                            "alternativa_b": "b) collections",
-                            "alternativa_c": "c) itertools",
-                            "resposta": "alternativa_b"
-                        },
-                        {
-                            "enunciado": "O que é uma árvore binária?",
-                            "alternativa_a": "a) Um tipo de lista ordenada",
-                            "alternativa_b": "b) Uma estrutura onde cada nó tem no máximo dois filhos",
-                            "alternativa_c": "c) Um tipo de dicionário",
-                            "resposta": "alternativa_b"
-                        }
-                    ]
-                }
-            ]
-        }
-    ]
-}
+[
+    {
+        "nome": "2222",
+        "niveis": [
+            {
+                "nivel": "Iniciante",
+                "descricao": "",
+                "questoes": [
+                    {
+                        "enunciado": "",
+                        "alternativa_a": "",
+                        "alternativa_b": "",
+                        "alternativa_c": "",
+                        "resposta": "alternativa_a"
+                    },
+                    {
+                        "enunciado": "",
+                        "alternativa_a": "",
+                        "alternativa_b": "",
+                        "alternativa_c": "",
+                        "resposta": "alternativa_a"
+                    },
+                    {
+                        "enunciado": "",
+                        "alternativa_a": "",
+                        "alternativa_b": "",
+                        "alternativa_c": "",
+                        "resposta": "alternativa_a"
+                    }
+                ]
+            },
+            {
+                "nivel": "Intermediario",
+                "descricao": "",
+                "questoes": [
+                    {
+                        "enunciado": "",
+                        "alternativa_a": "",
+                        "alternativa_b": "",
+                        "alternativa_c": "",
+                        "resposta": "alternativa_a"
+                    },
+                    {
+                        "enunciado": "",
+                        "alternativa_a": "",
+                        "alternativa_b": "",
+                        "alternativa_c": "",
+                        "resposta": "alternativa_a"
+                    },
+                    {
+                        "enunciado": "",
+                        "alternativa_a": "",
+                        "alternativa_b": "",
+                        "alternativa_c": "",
+                        "resposta": "alternativa_a"
+                    }
+                ]
+            },
+            {
+                "nivel": "Avancado",
+                "descricao": "",
+                "questoes": [
+                    {
+                        "enunciado": "",
+                        "alternativa_a": "",
+                        "alternativa_b": "",
+                        "alternativa_c": "",
+                        "resposta": "alternativa_a"
+                    },
+                    {
+                        "enunciado": "",
+                        "alternativa_a": "",
+                        "alternativa_b": "",
+                        "alternativa_c": "",
+                        "resposta": "alternativa_a"
+                    },
+                    {
+                        "enunciado": "",
+                        "alternativa_a": "",
+                        "alternativa_b": "",
+                        "alternativa_c": "",
+                        "resposta": "alternativa_a"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "nome": "234234",
+        "niveis": [
+            {
+                "nivel": "Iniciante",
+                "descricao": "",
+                "questoes": [
+                    {
+                        "enunciado": "",
+                        "alternativa_a": "",
+                        "alternativa_b": "",
+                        "alternativa_c": "",
+                        "resposta": "alternativa_a"
+                    },
+                    {
+                        "enunciado": "",
+                        "alternativa_a": "",
+                        "alternativa_b": "",
+                        "alternativa_c": "",
+                        "resposta": "alternativa_a"
+                    },
+                    {
+                        "enunciado": "",
+                        "alternativa_a": "",
+                        "alternativa_b": "",
+                        "alternativa_c": "",
+                        "resposta": "alternativa_a"
+                    }
+                ]
+            },
+            {
+                "nivel": "Intermediario",
+                "descricao": "",
+                "questoes": [
+                    {
+                        "enunciado": "",
+                        "alternativa_a": "",
+                        "alternativa_b": "",
+                        "alternativa_c": "",
+                        "resposta": "alternativa_a"
+                    },
+                    {
+                        "enunciado": "",
+                        "alternativa_a": "",
+                        "alternativa_b": "",
+                        "alternativa_c": "",
+                        "resposta": "alternativa_a"
+                    },
+                    {
+                        "enunciado": "",
+                        "alternativa_a": "",
+                        "alternativa_b": "",
+                        "alternativa_c": "",
+                        "resposta": "alternativa_a"
+                    }
+                ]
+            },
+            {
+                "nivel": "Avancado",
+                "descricao": "",
+                "questoes": [
+                    {
+                        "enunciado": "",
+                        "alternativa_a": "",
+                        "alternativa_b": "",
+                        "alternativa_c": "",
+                        "resposta": "alternativa_a"
+                    },
+                    {
+                        "enunciado": "",
+                        "alternativa_a": "",
+                        "alternativa_b": "",
+                        "alternativa_c": "",
+                        "resposta": "alternativa_a"
+                    },
+                    {
+                        "enunciado": "",
+                        "alternativa_a": "",
+                        "alternativa_b": "",
+                        "alternativa_c": "",
+                        "resposta": "alternativa_a"
+                    }
+                ]
+            }
+        ]
+    }
+]

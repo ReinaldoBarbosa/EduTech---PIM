@@ -1,5 +1,44 @@
 {
     "Usuarios": [
-        
+        {
+            "nome": "Aluno Rei",
+            "email": "reinaldobarbosa034@gmail.com",
+            "senha": "4b4242beda77d622bc11d4e1a2bf5181bd8f66ba6d9ac6eb7f79955d91ac201a",
+            "Progresso": 0,
+            "Pontuacao": 0,
+            "Rank": "Bronze",
+            "acessos": 3,
+            "tempo_total_min": 0,
+            "status": "aluno",
+            "materias": {
+                "234234": {
+                    "niveis_acessados": {
+                        "Iniciante": {
+                            "desbloqueado": true
+                        },
+                        "Intermediario": {
+                            "desbloqueado": false
+                        },
+                        "Avancado": {
+                            "desbloqueado": false
+                        }
+                    }
+                }
+            },
+            "ultimo_login": 1747588396.7669833
+        },
+        {
+            "nome": "Professor Rei",
+            "email": "reinaldobvidaloka@gmail.com",
+            "senha": "4b4242beda77d622bc11d4e1a2bf5181bd8f66ba6d9ac6eb7f79955d91ac201a",
+            "Progresso": 0,
+            "Pontuacao": 0,
+            "Rank": "Bronze",
+            "acessos": 6,
+            "tempo_total_min": 0,
+            "status": "professor",
+            "materias": {},
+            "ultimo_login": 1747588364.0086353
+        }
     ]
 }
