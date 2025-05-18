@@ -104,7 +104,7 @@
                         "alternativa_a": "a) Lista",
                         "alternativa_b": "b) Dicionário",
                         "alternativa_c": "c) Tupla",
-                        "resposta": "alternativa_a"
+                        "resposta": "alternativa_c"
                     },
                     {
                         "enunciado": "Um conjunto em Python não permite:",
