@@ -1,23 +1,23 @@
 [
     {
-        "nome": "2222",
+        "nome": "Matematica",
         "niveis": [
             {
                 "nivel": "Iniciante",
-                "descricao": "",
+                "descricao": "Algebra",
                 "questoes": [
                     {
-                        "enunciado": "",
-                        "alternativa_a": "",
-                        "alternativa_b": "",
-                        "alternativa_c": "",
+                        "enunciado": "Calcule 1+1",
+                        "alternativa_a": "2",
+                        "alternativa_b": "3",
+                        "alternativa_c": "5",
                         "resposta": "alternativa_a"
                     },
                     {
-                        "enunciado": "",
-                        "alternativa_a": "",
-                        "alternativa_b": "",
-                        "alternativa_c": "",
+                        "enunciado": "aa",
+                        "alternativa_a": "1",
+                        "alternativa_b": "2",
+                        "alternativa_c": "3",
                         "resposta": "alternativa_a"
                     },
                     {
@@ -86,86 +86,344 @@
         ]
     },
     {
-        "nome": "234234",
+        "nome": "Estruturas de Dados em Python",
         "niveis": [
             {
                 "nivel": "Iniciante",
-                "descricao": "",
+                "descricao": "Estruturas de dados são formas de organizar e armazenar informações. Em Python, as mais básicas incluem listas, tuplas, dicionários e conjuntos. Cada uma tem características próprias: listas são mutáveis e ordenadas; tuplas são como listas, mas imutáveis; dicionários armazenam pares chave-valor; e conjuntos são coleções de elementos únicos. Dominar essas estruturas é essencial para manipular dados.",
                 "questoes": [
                     {
-                        "enunciado": "",
-                        "alternativa_a": "",
-                        "alternativa_b": "",
-                        "alternativa_c": "",
+                        "enunciado": "Qual estrutura permite armazenar pares chave-valor?",
+                        "alternativa_a": "a) Lista",
+                        "alternativa_b": "b) Dicionário",
+                        "alternativa_c": " c) Tupla",
+                        "resposta": "alternativa_b"
+                    },
+                    {
+                        "enunciado": "Qual dessas estruturas é imutável?",
+                        "alternativa_a": "a) Lista",
+                        "alternativa_b": "b) Dicionário",
+                        "alternativa_c": "c) Tupla",
                         "resposta": "alternativa_a"
                     },
                     {
-                        "enunciado": "",
-                        "alternativa_a": "",
-                        "alternativa_b": "",
-                        "alternativa_c": "",
-                        "resposta": "alternativa_a"
-                    },
-                    {
-                        "enunciado": "",
-                        "alternativa_a": "",
-                        "alternativa_b": "",
-                        "alternativa_c": "",
+                        "enunciado": "Um conjunto em Python não permite:",
+                        "alternativa_a": "a) Elementos duplicados",
+                        "alternativa_b": "b) Números",
+                        "alternativa_c": "c) Strings",
                         "resposta": "alternativa_a"
                     }
                 ]
             },
             {
                 "nivel": "Intermediario",
-                "descricao": "",
+                "descricao": "O domínio intermediário envolve o uso eficiente de listas aninhadas, iteração com enumerate ou zip, uso de métodos como append, pop, update, e compreensão do comportamento de cópias (superficiais e profundas). A escolha correta da estrutura impacta a performance e clareza do código.",
                 "questoes": [
                     {
-                        "enunciado": "",
-                        "alternativa_a": "",
-                        "alternativa_b": "",
-                        "alternativa_c": "",
-                        "resposta": "alternativa_a"
+                        "enunciado": "O método `.append()` é usado para:",
+                        "alternativa_a": "a) Remover um item",
+                        "alternativa_b": "b) Adicionar um item ao final da lista",
+                        "alternativa_c": "c) Ordenar a lista",
+                        "resposta": "alternativa_b"
                     },
                     {
-                        "enunciado": "",
-                        "alternativa_a": "",
-                        "alternativa_b": "",
-                        "alternativa_c": "",
-                        "resposta": "alternativa_a"
+                        "enunciado": "O que `zip()` faz?",
+                        "alternativa_a": "a) Compacta arquivos",
+                        "alternativa_b": "b) Itera pares de elementos",
+                        "alternativa_c": " c) Divide uma lista",
+                        "resposta": "alternativa_b"
                     },
                     {
-                        "enunciado": "",
-                        "alternativa_a": "",
-                        "alternativa_b": "",
-                        "alternativa_c": "",
-                        "resposta": "alternativa_a"
+                        "enunciado": "O método `pop()` remove:",
+                        "alternativa_a": "a) Todos os itens",
+                        "alternativa_b": "b) O último item ou índice especificado",
+                        "alternativa_c": "c) Apenas strings",
+                        "resposta": "alternativa_b"
                     }
                 ]
             },
             {
                 "nivel": "Avancado",
-                "descricao": "",
+                "descricao": "Em níveis avançados, trabalha-se com estruturas complexas como heaps, filas de prioridade, pilhas e árvores implementadas em Python. Também se utiliza estruturas de dados otimizadas de bibliotecas como `collections` e `heapq`. A análise de complexidade e impacto de operações como inserção e busca torna-se relevante em projetos de maior escala.",
                 "questoes": [
                     {
-                        "enunciado": "",
-                        "alternativa_a": "",
-                        "alternativa_b": "",
-                        "alternativa_c": "",
+                        "enunciado": "A estrutura deque da biblioteca collections é ideal para:",
+                        "alternativa_a": "a) Acesso aleatório rápido",
+                        "alternativa_b": " b) Inserção e remoção em ambas as extremidades",
+                        "alternativa_c": "c) Ordenação eficiente",
+                        "resposta": "alternativa_b"
+                    },
+                    {
+                        "enunciado": "Qual estrutura simula uma fila de prioridade?",
+                        "alternativa_a": "a) set",
+                        "alternativa_b": "b) heapq",
+                        "alternativa_c": "c) tuple",
+                        "resposta": "alternativa_b"
+                    },
+                    {
+                        "enunciado": " O acesso a elementos por índice é mais eficiente em:",
+                        "alternativa_a": "a) Lista",
+                        "alternativa_b": " b) Dicionário",
+                        "alternativa_c": "c) Heap",
+                        "resposta": "alternativa_a"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "nome": "Algoritmos de Ordenação",
+        "niveis": [
+            {
+                "nivel": "Iniciante",
+                "descricao": "Algoritmos de ordenação organizam elementos em uma sequência específica, como ordem crescente ou decrescente. Entre os mais simples estão o Bubble Sort, que compara e troca elementos adjacentes, e o Insertion Sort, que insere cada item em sua posição correta. Estes são úteis para aprender a lógica de ordenação, apesar de não serem os mais eficientes.",
+                "questoes": [
+                    {
+                        "enunciado": "O que o Bubble Sort faz?",
+                        "alternativa_a": "a) Cria listas",
+                        "alternativa_b": "b) Ordena trocando elementos adjacentes",
+                        "alternativa_c": "c) Remove itens duplicados",
+                        "resposta": "alternativa_b"
+                    },
+                    {
+                        "enunciado": "Qual algoritmo insere itens em posição correta a cada iteração?",
+                        "alternativa_a": "a) Merge Sort",
+                        "alternativa_b": "b) Quick Sort",
+                        "alternativa_c": "c) Insertion Sort",
+                        "resposta": "alternativa_c"
+                    },
+                    {
+                        "enunciado": "Qual objetivo de um algoritmo de ordenação?",
+                        "alternativa_a": " a) Reverter listas",
+                        "alternativa_b": " b) Ordenar elementos",
+                        "alternativa_c": "c) Somar números",
+                        "resposta": "alternativa_b"
+                    }
+                ]
+            },
+            {
+                "nivel": "Intermediario",
+                "descricao": "No nível intermediário, o estudo se aprofunda em algoritmos mais eficientes como Merge Sort, que usa a técnica de dividir para conquistar, e Quick Sort, que organiza elementos em torno de um pivô. Além disso, avalia-se a complexidade de tempo (como O(n log n)) e a estabilidade dos algoritmos.",
+                "questoes": [
+                    {
+                        "enunciado": "Merge Sort é baseado em qual técnica?",
+                        "alternativa_a": "a) Troca de posições",
+                        "alternativa_b": "b) Divisão e conquista",
+                        "alternativa_c": "c) Busca linear",
+                        "resposta": "alternativa_b"
+                    },
+                    {
+                        "enunciado": "Quick Sort seleciona um elemento chamado:",
+                        "alternativa_a": "a) Nó",
+                        "alternativa_b": "b) Pivot",
+                        "alternativa_c": "c) Chave",
+                        "resposta": "alternativa_b"
+                    },
+                    {
+                        "enunciado": "Complexidade de tempo do Merge Sort é:",
+                        "alternativa_a": "a) O(n^2)",
+                        "alternativa_b": "b) O(n)",
+                        "alternativa_c": "c) O(n log n)",
+                        "resposta": "alternativa_c"
+                    }
+                ]
+            },
+            {
+                "nivel": "Avancado",
+                "descricao": "Em um nível avançado, além da análise da complexidade temporal e espacial, considera-se a performance em grandes volumes de dados. Algoritmos híbridos como Timsort (usado no Python `sorted`) combinam Merge e Insertion Sort para otimizar casos reais. Comparações com algoritmos não comparativos como Counting Sort também se tornam relevantes.",
+                "questoes": [
+                    {
+                        "enunciado": "Timsort é uma combinação de quais algoritmos?",
+                        "alternativa_a": "a) Bubble e Selection",
+                        "alternativa_b": "b) Merge e Insertion",
+                        "alternativa_c": "c) Quick e Heap",
+                        "resposta": "alternativa_b"
+                    },
+                    {
+                        "enunciado": "Counting Sort é eficiente quando:",
+                        "alternativa_a": "a) Elementos são grandes strings",
+                        "alternativa_b": "b) Faixa de valores é pequena",
+                        "alternativa_c": "c) Dados estão desordenados",
+                        "resposta": "alternativa_b"
+                    },
+                    {
+                        "enunciado": "O algoritmo usado por `sorted()` no Python é:",
+                        "alternativa_a": "a) Quick Sort",
+                        "alternativa_b": "b) Timsort",
+                        "alternativa_c": "c) Merge Sort",
+                        "resposta": "alternativa_b"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "nome": "Banco de Dados com SQL",
+        "niveis": [
+            {
+                "nivel": "Iniciante",
+                "descricao": "SQL (Structured Query Language) é a linguagem padrão para interação com bancos de dados relacionais. Com comandos como SELECT, INSERT, UPDATE e DELETE, é possível manipular os dados armazenados em tabelas. É fundamental entender o conceito de tabelas, colunas, linhas e chaves primárias para começar a trabalhar com bancos de dados.",
+                "questoes": [
+                    {
+                        "enunciado": "Qual comando SQL é usado para consultar dados?",
+                        "alternativa_a": "a) SELECT",
+                        "alternativa_b": "b) UPDATE",
+                        "alternativa_c": "c) DELETE",
                         "resposta": "alternativa_a"
                     },
                     {
-                        "enunciado": "",
-                        "alternativa_a": "",
-                        "alternativa_b": "",
-                        "alternativa_c": "",
-                        "resposta": "alternativa_a"
+                        "enunciado": " O que é uma tabela em SQL?",
+                        "alternativa_a": "a) Um tipo de gráfico",
+                        "alternativa_b": "b) Um arquivo de texto",
+                        "alternativa_c": "c) Um conjunto organizado de dados em colunas e linhas",
+                        "resposta": "alternativa_c"
                     },
                     {
-                        "enunciado": "",
-                        "alternativa_a": "",
-                        "alternativa_b": "",
-                        "alternativa_c": "",
+                        "enunciado": "Qual comando insere novos dados em uma tabela?",
+                        "alternativa_a": "a) INSERT",
+                        "alternativa_b": "b) SELECT",
+                        "alternativa_c": " c) DROP",
                         "resposta": "alternativa_a"
+                    }
+                ]
+            },
+            {
+                "nivel": "Intermediario",
+                "descricao": "No nível intermediário, aprende-se a utilizar cláusulas como WHERE, JOIN, GROUP BY e funções de agregação (SUM, COUNT, AVG). Relacionar tabelas usando INNER JOIN e LEFT JOIN permite consultas mais complexas e completas. O conhecimento de índices também se torna relevante.",
+                "questoes": [
+                    {
+                        "enunciado": "A cláusula WHERE serve para:",
+                        "alternativa_a": "a) Inserir dados",
+                        "alternativa_b": ") b) Restringir resultados de uma consulta",
+                        "alternativa_c": "c) Criar tabelas",
+                        "resposta": "alternativa_b"
+                    },
+                    {
+                        "enunciado": " Qual função retorna a média dos valores?",
+                        "alternativa_a": "a) SUM",
+                        "alternativa_b": "b) AVG",
+                        "alternativa_c": "c) COUNT",
+                        "resposta": "alternativa_b"
+                    },
+                    {
+                        "enunciado": "Um INNER JOIN retorna:",
+                        "alternativa_a": "a) Todas as linhas das duas tabelas",
+                        "alternativa_b": "b) Apenas as correspondências entre as tabelas",
+                        "alternativa_c": "c) Apenas linhas nulas",
+                        "resposta": "alternativa_b"
+                    }
+                ]
+            },
+            {
+                "nivel": "Avancado",
+                "descricao": "Em um nível avançado, o uso de subqueries, CTEs (Common Table Expressions), transações e controle de concorrência são essenciais. Também se exploram técnicas de normalização, modelagem relacional e otimização de consultas através de análise de planos de execução.",
+                "questoes": [
+                    {
+                        "enunciado": "O que é uma CTE em SQL?",
+                        "alternativa_a": "a) Uma transação",
+                        "alternativa_b": "b) Uma consulta temporária nomeada",
+                        "alternativa_c": "c) Um tipo de índice",
+                        "resposta": "alternativa_b"
+                    },
+                    {
+                        "enunciado": "Para garantir consistência em múltiplas operações, usamos:",
+                        "alternativa_a": "a) SELECT",
+                        "alternativa_b": "b) GROUP BY",
+                        "alternativa_c": "c) Transações",
+                        "resposta": "alternativa_c"
+                    },
+                    {
+                        "enunciado": "A análise de plano de execução serve para:",
+                        "alternativa_a": "a) Modificar os dados",
+                        "alternativa_b": "b) Criar tabelas",
+                        "alternativa_c": "c) Otimizar o desempenho de consultas",
+                        "resposta": "alternativa_c"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "nome": "LGPD",
+        "niveis": [
+            {
+                "nivel": "Iniciante",
+                "descricao": "A LGPD (Lei Geral de Proteção de Dados) é uma legislação brasileira que protege os dados pessoais dos cidadãos. Ela estabelece regras sobre coleta, uso, armazenamento e compartilhamento de dados por empresas e organizações. Um dos principais conceitos é o de consentimento do titular dos dados para o uso de suas informações.",
+                "questoes": [
+                    {
+                        "enunciado": "O principal objetivo da LGPD é:",
+                        "alternativa_a": "a) Garantir acesso à internet",
+                        "alternativa_b": "b) Proteger dados pessoais",
+                        "alternativa_c": "c) Estimular a economia",
+                        "resposta": "alternativa_b"
+                    },
+                    {
+                        "enunciado": "O que é necessário para usar dados pessoais segundo a LGPD?",
+                        "alternativa_a": " a) Permissão judicial",
+                        "alternativa_b": "b) Consentimento do titular",
+                        "alternativa_c": "c) Assinatura física",
+                        "resposta": "alternativa_b"
+                    },
+                    {
+                        "enunciado": "A LGPD se aplica a:",
+                        "alternativa_a": "a) Apenas empresas públicas",
+                        "alternativa_b": "b) Somente no exterior",
+                        "alternativa_c": "c) Qualquer organização que trate dados pessoais no Brasil",
+                        "resposta": "alternativa_c"
+                    }
+                ]
+            },
+            {
+                "nivel": "Intermediario",
+                "descricao": "A LGPD classifica os dados pessoais em categorias como dados sensíveis, que incluem origem racial, religião, dados de saúde e orientação sexual. Também define os direitos do titular, como acesso, correção e exclusão dos dados. As empresas devem nomear um encarregado (DPO) para lidar com as solicitações e garantir conformidade com a lei.",
+                "questoes": [
+                    {
+                        "enunciado": "Dados sensíveis incluem:",
+                        "alternativa_a": "a) Nome e e-mail",
+                        "alternativa_b": "b) Endereço",
+                        "alternativa_c": "c) Religião e dados de saúde",
+                        "resposta": "alternativa_c"
+                    },
+                    {
+                        "enunciado": "Qual é a função do DPO (encarregado)?",
+                        "alternativa_a": "a) Coletar dados",
+                        "alternativa_b": "b) Responder pelas práticas de proteção de dados",
+                        "alternativa_c": "c) Criar senhas",
+                        "resposta": "alternativa_b"
+                    },
+                    {
+                        "enunciado": "Um dos direitos do titular dos dados é:",
+                        "alternativa_a": "a) Negar acesso a seus dados",
+                        "alternativa_b": "b) Alterar a lei",
+                        "alternativa_c": "c) Solicitar a exclusão dos dados",
+                        "resposta": "alternativa_c"
+                    }
+                ]
+            },
+            {
+                "nivel": "Avancado",
+                "descricao": "No nível avançado, a LGPD é entendida como parte da governança de dados, exigindo mapeamento de processos, aplicação de medidas técnicas e administrativas, como criptografia, anonimização, controle de acesso e resposta a incidentes. Organizações também devem avaliar riscos e manter registro das operações de tratamento de dados para auditoria e fiscalização pela ANPD.",
+                "questoes": [
+                    {
+                        "enunciado": "Uma técnica usada para proteger dados sob a LGPD é:",
+                        "alternativa_a": "a) Backup",
+                        "alternativa_b": "b) Criptografia",
+                        "alternativa_c": "c) Indexação",
+                        "resposta": "alternativa_b"
+                    },
+                    {
+                        "enunciado": "A ANPD é responsável por:",
+                        "alternativa_a": "a) Vender dados pessoais",
+                        "alternativa_b": "b) Fiscalizar e aplicar sanções sobre a LGPD",
+                        "alternativa_c": "c) Criar senhas",
+                        "resposta": "alternativa_b"
+                    },
+                    {
+                        "enunciado": " Anonimização de dados serve para:",
+                        "alternativa_a": "a) Apagar os dados",
+                        "alternativa_b": "b) Ocultar a origem dos dados",
+                        "alternativa_c": "c) Tornar os dados não identificáveis",
+                        "resposta": "alternativa_c"
                     }
                 ]
             }
