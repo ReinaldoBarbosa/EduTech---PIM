@@ -56,8 +56,8 @@ O projeto segue os princípios da **LGPD** e adota práticas éticas de desenvol
 
 ## 🧪 Como Executar o Projeto
 
-> ⚠️ *Instale os requisitos com o comando:
-#    pip install -r requirements.txt.*
+> ⚠️ *Instale os requisitos com o comando:*
+>     *pip install -r requirements.txt.*
 
 ### Pré-requisitos:
 
