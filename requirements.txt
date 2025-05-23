@@ -1,0 +1,32 @@
+# EduTech - Requisitos do Sistema
+# ---------------------------------------------
+# Como instalar todas as bibliotecas necessárias:
+# 1. Crie um ambiente virtual (opcional, mas recomendado):
+#    python -m venv venv
+#
+# 2. Ative o ambiente virtual:
+#    - No Windows: .\venv\Scripts\activate
+#    - No Linux/macOS: source venv/bin/activate
+#
+# 3. Instale os requisitos com o comando:
+#    pip install -r requirements.txt
+#
+# ---------------------------------------------
+# Dependências do Projeto EduTech
+
+# Interface gráfica com tema moderno
+customtkinter==5.2.1
+
+# Validação de e-mails
+email-validator==2.1.0.post1
+
+# Manipulação de imagens (ícones, banners, etc.)
+Pillow==10.3.0
+
+# Gráficos e visualizações (para ranking ou desempenho)
+matplotlib==3.8.4
+
+# Variáveis de ambiente (caso use .env para configs ocultas)
+python-dotenv==1.0.1
+
+
